@@ -1,3 +1,5 @@
+const { execSync } = require('child_process');
+
 const accessToken = process.env.GITHUB_ACCESS_TOKEN;
 const commitRef = process.env.COMMIT_REF;
 const repo = process.env.REPO_NAME;
@@ -6,8 +8,13 @@ const bitriseStatus = process.env.BITRISE_BUILD_STATUS;
 const isPending = process.env.IS_PENDING;
 const buildUrl = process.env.BITRISE_BUILD_URL;
 const buildNumber = process.env.BITRISE_BUILD_NUMBER;
+const isBuildFailed = process.env.IS_BUILD_FAILED;
 
 (async () => {
+  if (isBuildFailed === undefined && bitriseStatus === '0') {
+    execSync(`envman add --key IS_BUILD_FAILED --value true`);
+  }
+
   const getCommitResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/commits/${commitRef}`, {
     method: 'GET',
     headers: {
