@@ -60,6 +60,6 @@ const isBuildFailed = process.env.IS_BUILD_FAILED;
       throw new Error("Failed to update status");
     }
   } else {
-    throw new Error("Failed to get statuses and commit");
+    throw new Error("Failed to get statuses and commit: " + getCommitResponse.statusText);
   }
 })();
