@@ -72,7 +72,7 @@ toolkit:
 
 
 inputs:
-  - COMMMIT_REF: $BITRISE_GIT_COMMIT
+  - COMMIT_REF: $BITRISE_GIT_COMMIT
     opts:
       title: "Commit ref"
       summary: Commit ref to update build info for

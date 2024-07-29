@@ -1,5 +1,5 @@
 const accessToken = process.env.GITHUB_ACCESS_TOKEN;
-const commitRef = process.env.COMMMIT_REF;
+const commitRef = process.env.COMMIT_REF;
 const repo = process.env.REPO_NAME;
 const owner = process.env.REPO_OWNER;
 const bitriseStatus = process.env.BITRISE_BUILD_STATUS;
