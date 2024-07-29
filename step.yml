@@ -78,6 +78,15 @@ inputs:
       summary: Commit ref to update build info for
       is_expand: false
       is_required: true
+  - IS_PENDING:
+    opts:
+      title: "Is pending"
+      summary: Set status to pending
+      is_expand: false
+      is_required: true
+      value_options:
+        - true
+        - false
   - ACCESS_TOKEN: $GITHUB_ACCESS_TOKEN
     opts:
       title: "Access token"

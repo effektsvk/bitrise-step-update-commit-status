@@ -3,6 +3,7 @@ const commitRef = process.env.COMMIT_REF;
 const repo = process.env.REPO_NAME;
 const owner = process.env.REPO_OWNER;
 const bitriseStatus = process.env.BITRISE_BUILD_STATUS;
+const isPending = process.env.IS_PENDING;
 const buildUrl = process.env.BITRISE_BUILD_URL;
 const buildNumber = process.env.BITRISE_BUILD_NUMBER;
 
@@ -17,7 +18,19 @@ const buildNumber = process.env.BITRISE_BUILD_NUMBER;
   });
   if (getCommitResponse.ok) {
     const commitSha = await getCommitResponse.text();
-    const state = bitriseStatus === "0" ? "success" : "failure";
+    const state = bitriseStatus === "0"
+        ? isPending === "true"
+          ? "pending"
+          : "success"
+        : "failure";
+    const description = state === "success"
+      ? 'The build succeeded'
+      : state === "failure"
+        ? 'The build failed'
+        : state === "pending"
+          ? 'The build is pending'
+          : 'The build failed';
+        
 
     const newStatusResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/statuses/${commitSha}`, {
       method: 'POST',
@@ -30,7 +43,7 @@ const buildNumber = process.env.BITRISE_BUILD_NUMBER;
         target_url: buildUrl,
         context: `ci/bitrise/${buildNumber}`,
         state,
-        description: state === "success" ? 'The build succeeded' : 'The build failed',
+        description,
       }),
     });
 
