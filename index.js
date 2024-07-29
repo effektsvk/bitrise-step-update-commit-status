@@ -15,6 +15,7 @@ const isBuildFailed = process.env.IS_BUILD_FAILED;
     execSync(`envman add --key IS_BUILD_FAILED --value true`);
   }
 
+  console.log(`Fetching commit info for ${commitRef} on ${owner}/${repo}`);
   const getCommitResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/commits/${commitRef}`, {
     method: 'GET',
     headers: {
@@ -38,7 +39,7 @@ const isBuildFailed = process.env.IS_BUILD_FAILED;
           ? 'The build is pending'
           : 'The build failed';
         
-
+    console.log(`Updating status for ${commitSha} to ${state} with description ${description}`);
     const newStatusResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/statuses/${commitSha}`, {
       method: 'POST',
       headers: {
