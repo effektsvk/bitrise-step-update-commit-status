@@ -16,6 +16,7 @@ const isBuildFailed = process.env.IS_BUILD_FAILED;
   }
 
   console.log(`Fetching commit info for ${commitRef} on ${owner}/${repo}`);
+  console.log(`URL: https://api.github.com/repos/${owner}/${repo}/commits/${commitRef}`);
   const getCommitResponse = await fetch(`https://api.github.com/repos/${owner}/${repo}/commits/${commitRef}`, {
     method: 'GET',
     headers: {
