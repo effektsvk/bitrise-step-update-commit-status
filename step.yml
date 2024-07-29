@@ -48,7 +48,7 @@ type_tags:
 #
 is_always_run: true
 # is_skippable: false
-# run_if: ""
+run_if: '{{not (enveq "IS_BUILD_FAILED" "true")}}'
 
 # Use the `deps` property to declare dependencies that you can fetch from an OS dependency manager.
 # You can find more information about this in the documentation here:
