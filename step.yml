@@ -78,10 +78,10 @@ inputs:
       summary: Commit ref to update build info for
       is_expand: false
       is_required: true
-  - IS_PENDING:
+  - IS_PENDING: "yes"
     opts:
       title: "Is pending"
-      summary: Set status to pending
+      summary: Pick "no" if this is last step (build success or failure)
       is_expand: false
       is_required: true
       value_options:
