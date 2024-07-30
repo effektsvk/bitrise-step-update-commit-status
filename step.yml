@@ -77,13 +77,11 @@ inputs:
     opts:
       title: "Commit ref"
       summary: Commit ref to update build info for
-      is_expand: false
       is_required: true
   - IS_PENDING:
     opts:
       title: "Is pending"
       summary: Pick "no" if this is last step (build success or failure)
-      is_expand: false
       is_required: true
       value_options:
         - "no"
@@ -92,13 +90,14 @@ inputs:
     opts:
       title: "Access token"
       summary: GitHub Access token
-      is_expand: false
       is_required: true
-  - REPO_NAME: $BITRISEIO_GIT_REPOSITORY_OWNER/$BITRISEIO_GIT_REPOSITORY_SLUG
+  - REPO_OWNER: $BITRISEIO_GIT_REPOSITORY_OWNER
     opts:
-      title: "Repository Org and Name"
-      summary: Repository Organization and Name
-      description: |
-        Repository Organization and Name (e.g. your-org/your-repo)
-      is_expand: false
+      title: "Repository Owner"
+      summary: Repository Owner
+      is_required: true
+  - REPO_OWNER: $BITRISEIO_GIT_REPOSITORY_SLUG
+    opts:
+      title: "Repository Name"
+      summary: Repository Name
       is_required: true
