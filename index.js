@@ -12,6 +12,7 @@ const isBuildFailed = process.env.IS_BUILD_FAILED;
 
 (async () => {
   if (isBuildFailed === undefined && bitriseStatus === '0') {
+    console.log("Setting IS_BUILD_FAILED to true");
     execSync(`envman add --key IS_BUILD_FAILED --value true`);
   }
 
