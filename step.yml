@@ -94,15 +94,11 @@ inputs:
       summary: GitHub Access token
       is_expand: false
       is_required: true
-  - REPO_NAME: $BITRISEIO_GIT_REPOSITORY_SLUG
+  - REPO_NAME: $BITRISEIO_GIT_REPOSITORY_OWNER/$BITRISEIO_GIT_REPOSITORY_SLUG
     opts:
-      title: "Repo name"
-      summary: Name of the repo to update
-      is_expand: false
-      is_required: true
-  - REPO_OWNER: $BITRISEIO_GIT_REPOSITORY_OWNER
-    opts:
-      title: "Repo owner"
-      summary: Owner of the repo to update
+      title: "Repository Org and Name"
+      summary: Repository Organization and Name
+      description: |
+        Repository Organization and Name (e.g. your-org/your-repo)
       is_expand: false
       is_required: true
