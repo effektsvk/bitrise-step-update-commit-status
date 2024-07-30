@@ -73,11 +73,12 @@ toolkit:
 
 
 inputs:
-  - COMMIT_REF: $BITRISE_GIT_COMMIT
+  - COMMIT_SHA: $BITRISE_GIT_COMMIT
     opts:
-      title: "Commit ref"
-      summary: Commit ref to update build info for
-      is_required: true
+      title: "Commit hash"
+      summary: Commit hash to update build info for
+      description: |
+        If not provided, the step will be skipped
   - IS_PENDING:
     opts:
       title: "Is pending"
